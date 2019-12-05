@@ -1,3 +1,6 @@
+require('dotenv').config()
+const { API_KEY, microCmsUrl } = process.env
+
 export default {
   mode: 'universal',
   /*
@@ -41,7 +44,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Axios module configuration
@@ -56,5 +60,9 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  env: {
+    API_KEY: API_KEY || '',
+    microCmsUrl: microCmsUrl || ''
   }
 }
