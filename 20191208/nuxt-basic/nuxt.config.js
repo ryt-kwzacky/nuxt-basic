@@ -1,6 +1,44 @@
+require('dotenv').config()
+const { API_KEY, microCmsUrl } = process.env
+
+const slugList = {
+  "items": [
+    {
+      "id": "test1",
+      "name": "test1",
+      "description": "test1!"
+    },
+    {
+      "id": "test2",
+      "name": "test2",
+      "description": "test2!"
+    },
+    {
+      "id": "1",
+      "name": "1",
+      "description": "1!"
+    },
+    {
+      "id": "2",
+      "name": "2",
+      "description": "2!"
+    }
+  ],
+  "default": {
+    "id": "slug",
+    "name": "slug",
+    "description": "slugs"
+  },
+  "error": {
+    "id": "nothing",
+    "name": "nothing",
+    "description": "nothing"
+  }
+}
+
 export default {
   mode: 'spa',
-  srcDir: "src/",
+  srcDir: 'src/',
   /*
    ** Headers of the page
    */
@@ -59,5 +97,16 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  env: {
+    API_KEY: API_KEY || '',
+    microCmsUrl: microCmsUrl || ''
+  },
+  generate: {
+    routes() {
+      return slugList.items.map(item => {
+        return `articles/${item.id}`
+      })
+    }
   }
 }
