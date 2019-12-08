@@ -1,4 +1,4 @@
 [build]
   base    = "20191208"
   publish = "20191208/nuxt-basic/dist"
-  command = "yarn generate"
+  command = "nuxt generate"
