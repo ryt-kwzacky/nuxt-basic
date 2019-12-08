@@ -2,37 +2,37 @@ require('dotenv').config()
 const { API_KEY, microCmsUrl } = process.env
 
 const slugList = {
-  "items": [
+  items: [
     {
-      "id": "test1",
-      "name": "test1",
-      "description": "test1!"
+      id: 'test1',
+      name: 'test1',
+      description: 'test1!'
     },
     {
-      "id": "test2",
-      "name": "test2",
-      "description": "test2!"
+      id: 'test2',
+      name: 'test2',
+      description: 'test2!'
     },
     {
-      "id": "1",
-      "name": "1",
-      "description": "1!"
+      id: '1',
+      name: '1',
+      description: '1!'
     },
     {
-      "id": "2",
-      "name": "2",
-      "description": "2!"
+      id: '2',
+      name: '2',
+      description: '2!'
     }
   ],
-  "default": {
-    "id": "slug",
-    "name": "slug",
-    "description": "slugs"
+  default: {
+    id: 'slug',
+    name: 'slug',
+    description: 'slugs'
   },
-  "error": {
-    "id": "nothing",
-    "name": "nothing",
-    "description": "nothing"
+  error: {
+    id: 'nothing',
+    name: 'nothing',
+    description: 'nothing'
   }
 }
 
@@ -104,7 +104,7 @@ export default {
   },
   generate: {
     routes() {
-      return slugList.items.map(item => {
+      return slugList.items.map((item) => {
         return `articles/${item.id}`
       })
     }
