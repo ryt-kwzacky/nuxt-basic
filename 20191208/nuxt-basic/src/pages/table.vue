@@ -3,15 +3,16 @@
     <h1>table page</h1>
     <button @click="fetch">fetch</button>
     fetched {{ length }} Items
-    <div v-for="item in items" :key="item">
-      <Table
-        :left-Column-Title="'Age'"
-        :right-Column-Title="'User Number'"
-        :number1="item.age"
-        :number2="item.users"
-      >
-      </Table>
-    </div>
+    <table border="1">
+      <tr>
+        <th>Age</th>
+        <th>User Number</th>
+      </tr>
+      <tr v-for="item in items" :key="item.age">
+        <td>{{ item.age }}</td>
+        <td>{{ item.users }}</td>
+      </tr>
+    </table>
 
     <table border="1">
       <tr>
@@ -28,7 +29,6 @@
 
 <script>
 import axios from 'axios'
-import Table from '@/components/Table.vue'
 
 function getJson() {
   const ages = Array.from(
@@ -56,12 +56,9 @@ export default {
   },
 
   async asyncData() {
-    const { data } = await axios.get(
-      'https://rytkwsk-test.microcms.io/api/v1/test',
-      {
-        headers: { 'X-API-KEY': '25acf25c-acef-4cfc-9091-72a276683f6a' }
-      }
-    )
+    const { data } = await axios.get(process.env.microCmsUrl + '/test', {
+      headers: { 'X-API-KEY': process.env.API_KEY }
+    })
     return {
       apiItems: data.contents
     }
@@ -75,10 +72,6 @@ export default {
     fetch() {
       this.items = getJson()
     }
-  },
-
-  components: {
-    Table
   }
 }
 </script>
