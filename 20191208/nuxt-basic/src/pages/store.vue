@@ -11,10 +11,16 @@
     <div>
       <p>{{ $store.getters.getItems }}</p>
     </div>
+    <div>
+      <button @click="mapCounter">+2</button>
+      <p>{{ $store.state.count3 }}</p>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'Vuex'
+
 export default {
   methods: {
     counter() {
@@ -22,7 +28,10 @@ export default {
     },
     counter2() {
       this.$store.dispatch('incrementAction')
-    }
+    },
+    ...mapMutations({
+      mapCounter: 'increment3'
+    })
   }
 }
 </script>

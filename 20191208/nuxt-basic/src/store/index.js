@@ -1,6 +1,7 @@
 export const state = () => ({
   count: 0,
   count2: 0,
+  count3: 0,
   items: [
     { name: 'itemA', price: 1500 },
     { name: 'itemB', price: 700 },
@@ -22,6 +23,9 @@ export const mutations = {
   },
   increment2(state) {
     state.count2 += 1
+  },
+  increment3(state) {
+    state.count3 += 2
   }
 }
 
