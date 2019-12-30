@@ -1,3 +1,6 @@
+require('dotenv').config()
+const { API_KEY, microCmsUrl } = process.env
+
 export default {
   mode: 'spa',
   /*
@@ -58,5 +61,12 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  generate: {
+    routes: ['/articles/test1', '/articles/test2', '/articles/1', '/articles/2']
+  },
+  env: {
+    API_KEY: API_KEY || '',
+    microCmsUrl: microCmsUrl || ''
   }
 }
